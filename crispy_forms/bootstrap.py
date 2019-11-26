@@ -111,7 +111,18 @@ class InlineCheckboxes(Field):
             form, form_style, context, template_pack=template_pack,
             extra_context={'inline_class': 'inline'}
         )
+class NotInlineCheckboxes(Field):
+    """
+    Layout object for rendering checkboxes inline::
 
+        InlineCheckboxes('field_name')
+    """
+    template = "%s/layout/checkboxselectmultiple_inline.html"
+
+    def render(self, form, form_style, context, template_pack=TEMPLATE_PACK, **kwargs):
+        return super(NotInlineCheckboxes, self).render(
+            form, form_style, context, template_pack=template_pack
+        )
 
 class InlineRadios(Field):
     """
